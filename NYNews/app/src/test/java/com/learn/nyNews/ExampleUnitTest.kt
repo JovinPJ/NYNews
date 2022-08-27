@@ -1,4 +1,4 @@
-package com.learn.nynews
+package com.learn.nyNews
 
 import org.junit.Test
 

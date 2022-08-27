@@ -1,4 +1,4 @@
-package com.learn.nynews
+package com.learn.nyNews
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

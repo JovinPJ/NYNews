@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.learn.nyNews">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".ui.NyNewsApp"
         android:allowBackup="true"

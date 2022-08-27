@@ -4,13 +4,14 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.learn.nyNews.R
 import com.learn.nyNews.ui.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class NewsViewModel : BaseViewModel() {
-
+@HiltViewModel
+class NewsViewModel @Inject constructor() : BaseViewModel() {
 
     fun fetchMostViewedNyNews() {
-
         try {
             showProgress()
             viewModelScope.launch(handler) {

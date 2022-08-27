@@ -2,7 +2,9 @@ package com.learn.nyNews.ui.base
 
 import androidx.fragment.app.Fragment
 import com.learn.nyNews.ui.utils.showToast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 abstract class BaseFragment : Fragment() {
 
     protected fun setBaseObserver(viewModel: BaseViewModel) {

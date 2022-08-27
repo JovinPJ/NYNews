@@ -5,25 +5,47 @@
 
     <data>
 
-        <!--<variable
+        <variable
             name="viewModel"
-            type="com.learn.nyNews.ui.home.NewsViewModel" />-->
+            type="com.learn.nyNews.ui.home.NewsViewModel" />
 
         <variable
             name="adapter"
             type="com.learn.nyNews.ui.home.NewsAdapter" />
     </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
-        android:name="com.learn.nyNews.ui.home.NewsFragment"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:setAdapter="@{adapter}"
-        tools:context=".ui.home.NewsFragment"
-        tools:listitem="@layout/news_item" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:name="com.learn.nyNews.ui.home.NewsFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setAdapter="@{adapter}"
+
+            tools:context=".ui.home.NewsFragment"
+            tools:listitem="@layout/news_item" />
+
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:isVisible="@{viewModel.getProgressBarLiveData()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

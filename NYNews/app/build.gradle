@@ -16,6 +16,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", "\"IVp4FICFctysZqVoXcJXfK2W803oynm\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.nytimes.com/svc/mostpopular/v2/\"")
     }
 
     buildTypes {
@@ -52,4 +55,10 @@ dependencies {
 
     implementation "com.google.dagger:hilt-android:2.42"
     kapt "com.google.dagger:hilt-compiler:2.42"
+
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
+
 }

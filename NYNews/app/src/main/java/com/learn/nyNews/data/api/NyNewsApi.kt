@@ -1,7 +1,7 @@
 package com.learn.nyNews.data.api
 
 import com.learn.nyNews.BuildConfig
-import com.learn.nyNews.data.api.models.ResultList
+import com.learn.nyNews.data.api.models.mostViewed.ResultList
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

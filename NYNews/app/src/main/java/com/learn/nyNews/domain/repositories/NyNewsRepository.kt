@@ -1,7 +1,10 @@
 package com.learn.nyNews.domain.repositories
 
+import com.learn.nyNews.domain.model.Article
+import com.learn.nyNews.domain.model.DataResult
+
 interface NyNewsRepository {
 
-    suspend fun fetchMostViewedNyNews(): List<String>
+    suspend fun fetchMostViewedNyNews(): DataResult<List<Article>>
 
 }

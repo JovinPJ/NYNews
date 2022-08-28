@@ -4,6 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.learn.nyNews.R
+import com.learn.nyNews.domain.model.ApiError
+import com.learn.nyNews.domain.model.ERROR_CODE_NETWORK
+import com.learn.nyNews.domain.model.ERROR_CODE_SERVER
+import com.learn.nyNews.domain.model.ERROR_CODE_UNKNOWN
 import com.learn.nyNews.ui.models.ToastMessage
 import kotlinx.coroutines.CoroutineExceptionHandler
 import java.net.UnknownHostException
@@ -44,4 +48,14 @@ abstract class BaseViewModel : ViewModel() {
     protected fun hideProgress() {
         progressBarLiveData.postValue(false)
     }
+
+    protected fun showError(error: ApiError) {
+        when (error.errorCode) {
+            ERROR_CODE_NETWORK -> showToast(toastRes = R.string.check_internet)
+            ERROR_CODE_SERVER, ERROR_CODE_UNKNOWN -> if (error.errorMessage != null && error.errorMessage.isNotEmpty())
+                showToast(error.errorMessage) else showToast(toastRes = R.string.unknown_error)
+
+        }
+    }
+
 }

@@ -17,7 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "API_KEY", "\"IVp4FICFctysZqVoXcJXfK2W803oynm\"")
+        buildConfigField("String", "API_KEY", "\"IVp4FICFctysZqVoXcJXfK2W803oynmT\"")
         buildConfigField("String", "BASE_URL", "\"https://api.nytimes.com/svc/mostpopular/v2/\"")
     }
 
@@ -52,6 +52,7 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
 
     implementation "com.google.dagger:hilt-android:2.42"
     kapt "com.google.dagger:hilt-compiler:2.42"

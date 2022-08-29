@@ -14,8 +14,8 @@ class NewsAdapter : ListAdapter<Article, NewsAdapter.NewsViewHolder>(Companion) 
     class NewsViewHolder(val binding: NewsItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     companion object : DiffUtil.ItemCallback<Article>() {
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean =
-            oldItem === newItem
+        override fun areItemsTheSame(oldItem: Article, newItem: Article):
+                Boolean = oldItem === newItem
 
         override fun areContentsTheSame(oldItem: Article, newItem: Article):
                 Boolean = oldItem.title == newItem.title

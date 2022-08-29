@@ -23,5 +23,12 @@ API_KEY to fetch the api is not masked, so that one can easily build and run the
 
 ## To Test the Application :
 
-There is a Gradle Task available named 'jacoco'. We need to run that task to test the application, it also shows the total test coverage after successfully
-completing the Gradle task in the file '/jacoco/'. To run the Gradle task we can better use Android Studio Terminal.
+There is a Gradle Task available named `testDebugUnitTestCoverageVerify`. We need to run that task using the command
+`./gradlew testDebugUnitTestCoverageVerify`, It will show the total test coverage percentage in the build console, after task successfully 
+completed, like this `Test coverage: 50%`.
+The test details also can be found in browser by opening these html files : 
+
+ - build/reports/tests/testDebugUnitTest/index.html
+ - build/reports/jacoco/testDebugUnitTestCoverage/html/index.html
+
+To run the Gradle task we can better use Android Studio Terminal.

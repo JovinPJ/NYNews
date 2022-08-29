@@ -6,17 +6,25 @@ import com.learn.nyNews.data.api.models.mostViewed.ResultList
 import com.learn.nyNews.data.api.performApiCall
 import com.learn.nyNews.domain.model.Article
 import com.learn.nyNews.domain.model.DataResult
+import com.learn.nyNews.domain.repositories.NyNewsCacheRepository
 import com.learn.nyNews.domain.repositories.NyNewsRepository
 import javax.inject.Inject
 
-class NyNewsRepositoryImpl @Inject constructor(private val newsApi: NyNewsApi) : NyNewsRepository {
+class NyNewsRepositoryImpl @Inject constructor(
+    private val newsApi: NyNewsApi,
+    private val newsCacheRepository: NyNewsCacheRepository,
+) : NyNewsRepository {
 
     override suspend fun fetchMostViewedNyNews(): DataResult<List<Article>> {
         return performApiCall {
             newsApi.getMostViewed()
-        }.convertToDomain {
-            convertToArticles(it)
-        }
+        }.convertToDomain(onSuccess = {
+            val articles = convertToArticles(it)
+            newsCacheRepository.cacheArticles(articles)
+            articles
+        }, onFailure = {
+            newsCacheRepository.fetchRecentArticles()
+        })
     }
 
     private fun convertToArticles(resultList: ResultList?): List<Article> {

@@ -55,13 +55,16 @@ private fun <T : Any> getErrorMsg(
     return errorResponse?.fault?.faultstring
 }
 
-fun <T : Any, R : Any> DataResult<T>.convertToDomain(convert: (T) -> R): DataResult<R> {
+suspend fun <T : Any, R : Any> DataResult<T>.convertToDomain(
+    onSuccess: suspend (T) -> R,
+    onFailure: suspend () -> R,
+): DataResult<R> {
     return when (this) {
         is DataResult.Success -> {
-            DataResult.Success(convert(data))
+            DataResult.Success(onSuccess(data))
         }
         is DataResult.Failure -> {
-            DataResult.Failure(error)
+            DataResult.Failure(error, onFailure())
         }
     }
 }

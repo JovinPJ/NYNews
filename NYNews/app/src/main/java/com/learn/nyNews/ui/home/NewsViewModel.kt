@@ -20,8 +20,9 @@ class NewsViewModel @Inject constructor(private val fetchMostViewedNyNewsUsecase
             }
             is DataResult.Failure -> {
                 showError(dataResult.error)
+                if (dataResult.cachedData != null && dataResult.cachedData.isNotEmpty())
+                    emit(dataResult.cachedData)
             }
-
         }
         hideProgress()
     }

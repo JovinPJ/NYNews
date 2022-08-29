@@ -8,8 +8,8 @@ Since the UI design is not our concern, I didn't focus much on the screen Design
 
 ## Screenshots
 
-![Screenshot showing For News listing screen](docs/images/screenshot_dark.png "Screenshot showing For News listing screen")
-![Screenshot showing For News listing screen](docs/images/screenshot_light.png "Screenshot showing For News listing screen")
+![Screenshot showing For News listing screen](doc/images/screenshot_dark.png "Screenshot showing For News listing screen")
+![Screenshot showing For News listing screen](doc/images/screenshot_light.png "Screenshot showing For News listing screen")
 
 
 ## To build the Application :

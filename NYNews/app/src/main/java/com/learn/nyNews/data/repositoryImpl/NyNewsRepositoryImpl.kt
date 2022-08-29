@@ -28,9 +28,16 @@ class NyNewsRepositoryImpl @Inject constructor(private val newsApi: NyNewsApi) :
                     mediaUrl = result.media?.get(0)?.media_metadata?.get(0)?.url
                 } catch (e: Exception) {
                 }
-                articleList.add(Article(result.title, result.byline, mediaUrl))
+                articleList.add(
+                    Article(
+                        result.title,
+                        result.abstract,
+                        result.byline,
+                        mediaUrl,
+                        result.published_date
+                    )
+                )
             }
-
         }
         return articleList
     }

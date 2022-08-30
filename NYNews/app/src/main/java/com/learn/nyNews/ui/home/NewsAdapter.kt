@@ -9,7 +9,8 @@ import com.learn.nyNews.databinding.NewsItemBinding
 import com.learn.nyNews.domain.model.Article
 
 
-class NewsAdapter : ListAdapter<Article, NewsAdapter.NewsViewHolder>(Companion) {
+class NewsAdapter(private val newsItemClickListener: NewsItemClickListener) :
+    ListAdapter<Article, NewsAdapter.NewsViewHolder>(Companion) {
 
     class NewsViewHolder(val binding: NewsItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -32,6 +33,7 @@ class NewsAdapter : ListAdapter<Article, NewsAdapter.NewsViewHolder>(Companion) 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val currentArticle = getItem(position)
         holder.binding.article = currentArticle
+        holder.binding.newsItemClick = newsItemClickListener
         holder.binding.executePendingBindings()
     }
 

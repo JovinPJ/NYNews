@@ -6,7 +6,6 @@ import com.learn.nyNews.data.api.models.mostViewed.ResultList
 import com.learn.nyNews.data.api.performApiCall
 import com.learn.nyNews.domain.model.Article
 import com.learn.nyNews.domain.model.DataResult
-import com.learn.nyNews.domain.repositories.NyNewsCacheRepository
 import com.learn.nyNews.domain.repositories.NyNewsRepository
 import javax.inject.Inject
 
@@ -23,8 +22,12 @@ class NyNewsRepositoryImpl @Inject constructor(
             newsCacheRepository.cacheArticles(articles)
             articles
         }, onFailure = {
-            newsCacheRepository.fetchRecentArticles()
+            newsCacheRepository.fetchMostViewedArticles()
         })
+    }
+
+    override suspend fun fetchNyNews(id: String): Article {
+        return newsCacheRepository.fetchArticle(id)
     }
 
     private fun convertToArticles(resultList: ResultList?): List<Article> {
@@ -42,7 +45,8 @@ class NyNewsRepositoryImpl @Inject constructor(
                         result.abstract,
                         result.byline,
                         mediaUrl,
-                        result.published_date
+                        result.published_date,
+                        result.url
                     )
                 )
             }

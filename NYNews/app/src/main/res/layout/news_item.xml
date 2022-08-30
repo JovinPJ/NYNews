@@ -7,39 +7,86 @@
         <variable
             name="article"
             type="com.learn.nyNews.domain.model.Article" />
+
+        <variable
+            name="newsItemClick"
+            type="com.learn.nyNews.ui.home.NewsItemClickListener" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp">
+        android:layout_margin="@dimen/dimen_6dp"
+        android:onClick="@{() ->  newsItemClick.onClick(article)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/text_margin">
+            android:padding="@dimen/dimen_6dp">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/thumb_img"
+                android:layout_width="@dimen/img_circle_radius"
+                android:layout_height="@dimen/img_circle_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadThumbImage="@{article.mediaUrl}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_6dp"
+                android:layout_marginTop="@dimen/text_margin"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:text="@{article.title}"
                 android:textAppearance="?attr/textAppearanceListItem"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/font_18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/right_icon"
+                app:layout_constraintStart_toEndOf="@id/thumb_img"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/by"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginStart="@dimen/dimen_6dp"
+                android:layout_marginTop="@dimen/dimen_6dp"
                 android:text="@{article.by}"
                 android:textAppearance="?attr/textAppearanceListItemSecondary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/right_icon"
+                app:layout_constraintStart_toEndOf="@id/thumb_img"
                 app:layout_constraintTop_toBottomOf="@id/title" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/right_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_right_arrow" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@android:drawable/ic_menu_my_calendar"
+                android:gravity="center"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                android:text="@{article.dateStr}"
+                android:textAppearance="?attr/textAppearanceListItemSecondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/by" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>

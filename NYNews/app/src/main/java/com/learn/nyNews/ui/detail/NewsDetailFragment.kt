@@ -1,33 +1,33 @@
-package com.learn.nyNews.ui.home
+package com.learn.nyNews.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.learn.nyNews.R
-import com.learn.nyNews.databinding.FragmentNewsBinding
+import com.learn.nyNews.databinding.FragmentNewsDetailBinding
 import com.learn.nyNews.ui.base.BaseFragment
 
-class NewsFragment : BaseFragment() {
+class NewsDetailFragment : BaseFragment() {
 
-    private var _binding: FragmentNewsBinding? = null
+    private val viewModel: NewsDetailViewModel by viewModels()
+    private var _binding: FragmentNewsDetailBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: NewsViewModel by viewModels()
+
+    private var newsId: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        newsId = arguments?.getString(ARG_ID)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNewsBinding.inflate(layoutInflater)
+        _binding = FragmentNewsDetailBinding.inflate(layoutInflater)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-        binding.adapter = NewsAdapter { article ->
-            findNavController().navigate(
-                R.id.action_newsList_to_detail, bundleOf(ARG_ID to article.title)
-            )
-        }
         return binding.root
     }
 
@@ -38,13 +38,15 @@ class NewsFragment : BaseFragment() {
 
     private fun setObservers() {
         setBaseObserver(viewModel)
-        viewModel.mostViewedNewsLiveData.observe(viewLifecycleOwner) {
-            (binding.adapter as NewsAdapter).submitList(it)
+        newsId?.let {
+            viewModel.fetchNyNews(it)
         }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

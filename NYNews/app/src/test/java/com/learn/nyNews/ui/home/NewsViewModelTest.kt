@@ -1,10 +1,10 @@
 package com.learn.nyNews.ui.home
 
+import com.learn.nyNews.base.BaseTest
 import com.learn.nyNews.domain.model.ApiError
 import com.learn.nyNews.domain.model.Article
 import com.learn.nyNews.domain.model.DataResult
 import com.learn.nyNews.domain.usecases.FetchMostViewedNyNewsUsecase
-import com.learn.nyNews.ui.base.BaseViewModelTest
 import com.learn.nyNews.util.getOrAwaitValue
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.stub
@@ -18,7 +18,7 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 
 @OptIn(ExperimentalCoroutinesApi::class, DelicateCoroutinesApi::class)
-class NewsViewModelTest : BaseViewModelTest() {
+class NewsViewModelTest : BaseTest() {
 
     @Mock
     lateinit var fetchMostViewedNyNewsUsecase: FetchMostViewedNyNewsUsecase
@@ -32,7 +32,6 @@ class NewsViewModelTest : BaseViewModelTest() {
         val title = "df"
         fetchMostViewedNyNewsUsecase.stub {
             onBlocking { invoke() } doReturn DataResult.Success(listOf(Article(title)))
-
         }
 
         ///When

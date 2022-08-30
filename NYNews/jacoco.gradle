@@ -16,13 +16,14 @@ project.afterEvaluate {
 }
 ext.excludes = [
         '**/databinding/*Binding.*',
+        '**/DataBindingTriggerClass.*',
+        '**/*databinding*',
         '**/R.class',
         '**/R$*.class',
         '**/BuildConfig.*',
         '**/Manifest*.*',
         '**/*Test*.*',
         'android/**/*.*',
-        // butterKnife
         '**/*$ViewInjector*.*',
         '**/*$ViewBinder*.*',
         '**/Lambda$*.class',
@@ -54,7 +55,17 @@ ext.excludes = [
         '**/*_MembersInjector.class',
         '**/*_Factory*.*',
         '**/*_Provide*Factory*.*',
-        '**/*Extensions*.*'
+        //UI
+        '**/*Extensions*.*',
+        '**/*Fragment*.*',
+        '**/*Activity*.*',
+        '**/*Adapter*.*',
+        '**/*App*.*',
+        '**/*db*',
+        '**/*api*',
+        '**/*utils*',
+        '**/*callback*'
+
 ]
 
 def createVariantCoverage(variant) {
@@ -102,14 +113,14 @@ def createVariantCoverage(variant) {
                     minimum = 0
                 }
             }
-            /*rule {
+            rule {
                 element = 'BUNDLE'
                 limit {
                     counter = 'LINE'
                     value = 'COVEREDRATIO'
                     minimum = 0.30
                 }
-            }*/
+            }
         }
         def javaClasses = fileTree(dir: variant.javaCompileProvider.get().destinationDir, excludes: project.excludes)
         def kotlinClasses = fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: project.excludes)

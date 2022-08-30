@@ -7,6 +7,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 abstract class BaseFragment : Fragment() {
 
+    protected companion object {
+        const val ARG_ID = "arg_id"
+    }
+
     protected fun setBaseObserver(viewModel: BaseViewModel) {
         viewModel.getToastLiveData().observe(viewLifecycleOwner) { toastMsg ->
             showToast(

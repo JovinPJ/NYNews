@@ -22,8 +22,12 @@ class NyNewsRepositoryImpl @Inject constructor(
             newsCacheRepository.cacheArticles(articles)
             articles
         }, onFailure = {
-            newsCacheRepository.fetchRecentArticles()
+            newsCacheRepository.fetchMostViewedArticles()
         })
+    }
+
+    override suspend fun fetchNyNews(id: String): Article {
+        return newsCacheRepository.fetchArticle(id)
     }
 
     private fun convertToArticles(resultList: ResultList?): List<Article> {

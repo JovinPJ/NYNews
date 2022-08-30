@@ -12,7 +12,7 @@ class NyNewsCacheRepository @Inject constructor(private val articleDao: ArticleD
         articleDao.insertAllArticles(articles.map { it.toArticleEntity() })
     }
 
-    suspend fun fetchRecentArticles(): List<Article> {
+    suspend fun fetchMostViewedArticles(): List<Article> {
         return articleDao.fetchAllArticles().map { it.toArticle() }
     }
 

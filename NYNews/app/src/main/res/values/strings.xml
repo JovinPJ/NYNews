@@ -2,4 +2,5 @@
     <string name="app_name">NYNews</string>
     <string name="check_internet">please check your internet connectivity</string>
     <string name="unknown_error">Something went wrong</string>
+    <string name="no_articles">No News found</string>
 </resources>

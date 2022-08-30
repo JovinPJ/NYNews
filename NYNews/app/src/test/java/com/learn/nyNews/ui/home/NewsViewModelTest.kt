@@ -32,7 +32,6 @@ class NewsViewModelTest : BaseViewModelTest() {
         val title = "df"
         fetchMostViewedNyNewsUsecase.stub {
             onBlocking { invoke() } doReturn DataResult.Success(listOf(Article(title)))
-
         }
 
         ///When

@@ -20,6 +20,13 @@ android {
 
         buildConfigField("String", "API_KEY", "\"IVp4FICFctysZqVoXcJXfK2W803oynmT\"")
         buildConfigField("String", "BASE_URL", "\"https://api.nytimes.com/svc/mostpopular/v2/\"")
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
+
     }
 
     buildTypes {

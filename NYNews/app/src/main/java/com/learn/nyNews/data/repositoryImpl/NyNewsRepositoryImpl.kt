@@ -6,7 +6,6 @@ import com.learn.nyNews.data.api.models.mostViewed.ResultList
 import com.learn.nyNews.data.api.performApiCall
 import com.learn.nyNews.domain.model.Article
 import com.learn.nyNews.domain.model.DataResult
-import com.learn.nyNews.domain.repositories.NyNewsCacheRepository
 import com.learn.nyNews.domain.repositories.NyNewsRepository
 import javax.inject.Inject
 

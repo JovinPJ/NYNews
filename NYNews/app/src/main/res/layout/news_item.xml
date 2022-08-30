@@ -32,7 +32,7 @@
 
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:loadImage="@{article.url}" />
+                app:loadThumbImage="@{article.mediaUrl}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/title"

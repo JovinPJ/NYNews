@@ -5,4 +5,5 @@
     <dimen name="dimen_4dp">4dp</dimen>
     <dimen name="font_18sp">18sp</dimen>
     <dimen name="img_circle_radius">60dp</dimen>
+    <dimen name="article_img_height">250dp</dimen>
 </resources>

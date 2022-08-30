@@ -9,6 +9,7 @@ data class ArticleEntity(
     val title: String,
     val description: String?,
     val by: String?,
-    val url: String?,
-    val dateStr: String?
+    val mediaUrl: String?,
+    val dateStr: String?,
+    val articleUrl: String?
 )

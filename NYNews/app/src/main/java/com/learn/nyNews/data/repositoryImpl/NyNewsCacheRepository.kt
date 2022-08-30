@@ -22,11 +22,11 @@ class NyNewsCacheRepository @Inject constructor(private val articleDao: ArticleD
 
 
     private fun ArticleEntity.toArticle(): Article {
-        return Article(title, description, by, url, dateStr)
+        return Article(title, description, by, mediaUrl, dateStr, articleUrl)
     }
 
     private fun Article.toArticleEntity(): ArticleEntity {
-        return ArticleEntity(title, description, by, url, dateStr)
+        return ArticleEntity(title, description, by, mediaUrl, dateStr, articleUrl)
     }
 
 }

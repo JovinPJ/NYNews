@@ -45,7 +45,8 @@ class NyNewsRepositoryImpl @Inject constructor(
                         result.abstract,
                         result.byline,
                         mediaUrl,
-                        result.published_date
+                        result.published_date,
+                        result.url
                     )
                 )
             }

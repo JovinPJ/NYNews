@@ -1,6 +1,8 @@
 package com.learn.nyNews.ui.home
 
 import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.learn.nyNews.domain.model.Article
 import com.learn.nyNews.domain.model.DataResult
@@ -14,6 +16,11 @@ class NewsViewModel @Inject constructor(private val fetchMostViewedNyNewsUsecase
     BaseViewModel() {
 
     val emptyNewsViewState = ObservableBoolean(false)
+    var mostViewedNewsLiveData: LiveData<List<Article>> = MutableLiveData()
+
+    init {
+        mostViewedNewsLiveData = fetchMostViewedNyNews()
+    }
 
     fun fetchMostViewedNyNews() = liveData {
         showProgress()

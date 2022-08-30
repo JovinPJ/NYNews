@@ -1,4 +1,4 @@
-package com.learn.nyNews.ui.base
+package com.learn.nyNews.base
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations
 
 @ExperimentalCoroutinesApi
 @DelicateCoroutinesApi
-abstract class BaseViewModelTest {
+abstract class BaseTest {
 
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
     private lateinit var openMocks: AutoCloseable

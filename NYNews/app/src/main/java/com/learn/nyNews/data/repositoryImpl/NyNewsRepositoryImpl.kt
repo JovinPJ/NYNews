@@ -32,12 +32,12 @@ class NyNewsRepositoryImpl @Inject constructor(
 
     private fun convertToArticles(resultList: ResultList?): List<Article> {
         val articleList: ArrayList<Article> = arrayListOf()
-        var mediaUrl: String? = null
         resultList?.results?.forEach { result ->
             if (result.title != null && result.title.isNotEmpty()) {
-                try {
-                    mediaUrl = result.media?.get(0)?.media_metadata?.get(0)?.url
+                val mediaUrl = try {
+                    result.media?.get(0)?.media_metadata?.get(0)?.url
                 } catch (e: Exception) {
+                    null
                 }
                 articleList.add(
                     Article(
